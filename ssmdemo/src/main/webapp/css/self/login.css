@@ -1,0 +1,19 @@
+#font{
+	position:absolute;
+	top:25%;
+	left:43%;
+	font-family:SimSun;
+	font-size:48px;
+}
+
+.col-center-block {  
+	position:absolute;
+	top:40%;
+	left:33%;
+	font-family:SimSun;
+	font-size:18px;
+    float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;  
+}  
