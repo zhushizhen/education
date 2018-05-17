@@ -21,7 +21,7 @@
 <script type="text/javascript" src="<%=basePath%>js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
 </head>
-<body>
+<body>  
 	<div class="row">
 		<div id="font">教务管理系统</div>
 		<div class="col-xs-8 col-md-6 col-center-block">
