@@ -16,6 +16,13 @@
     from tb_register
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <!-- 查询是否有重名 -->
+  <select id="selectRegByName" resultMap="BaseResultMap"  parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_register
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from tb_register
     where id = #{id,jdbcType=VARCHAR}

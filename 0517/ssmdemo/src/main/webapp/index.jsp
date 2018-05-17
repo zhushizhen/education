@@ -98,7 +98,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="register">注册</button>
+						<button type="button" class="btn btn-primary" id="zhuce">注册</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 						</button>
 					</div>
@@ -121,6 +121,27 @@
 		   }
 	   });
    })
+   //用户名不可为空，且不可重复
+   $("#username1").blur(function(){
+	   var username1=$("#username1").val();
+	   if(username1 == ""){
+		   alert("用户名不可为空");
+		   return;
+	   }else{
+		   $.ajax({
+			   type:"POST",
+			   url:"register/isRepeatName?username="+username1,
+			   dataType:"json",
+			   success:function(data){
+				   if(data.message!=null){
+					   alert("该用户名已经存在，请重新输入！");
+					   $("#username1").val("");
+				   }
+				   
+			   }
+		   })
+	   }
+   });
    //确认密码输入框失去焦点，触发
    $("#password2").blur(function(){
     var password1=$("#password1").val();
@@ -134,8 +155,20 @@
     }
   });
    //点击注册与后台交互并返回是否成功的信息
-   $("#register").click(function(){
+   $("#zhuce").click(function(){
+	   debugger;
+	   var username1=$("#username1").val();
+	   var password1=$("#password1").val();
+	   var role=$('#roles option:selected') .val();
+	   if(username1 == ""){
+		   alert("用户名不能为空");
+		   return;
+	   }
+	   if(password1 == ""){
+		   alert("密码不能为空");
+		   return;
+	   }
 	   
-   })
+   });
 </script>
 </html>

@@ -1,5 +1,7 @@
 package com.richdoor.dao;
 
+import java.util.List;
+
 import com.richdoor.entity.Register;
 
 public interface RegisterDao {
@@ -14,4 +16,9 @@ public interface RegisterDao {
     int updateByPrimaryKeySelective(Register record);
 
     int updateByPrimaryKey(Register record);
+    /**
+     * 查询是否有对应用户
+     * @return
+     */
+    List<Register> selectRegByName(String username);
 }
