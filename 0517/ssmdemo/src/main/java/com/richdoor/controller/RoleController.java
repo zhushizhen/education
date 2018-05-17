@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.richdoor.entity.Role;
+import com.richdoor.entity.RoleEntity;
 import com.richdoor.service.RoleService;
 import com.richdoor.util.JsonResult;
 
@@ -20,9 +20,9 @@ public class RoleController {
 	private RoleService roleService;
     
 	@RequestMapping("/roleList")
-	public @ResponseBody JsonResult<List<Role>> getRoleList(){
-		JsonResult<List<Role>> jsonResult=new JsonResult<List<Role>>();
-		List<Role> roleList=roleService.getRoleList();
+	public @ResponseBody JsonResult<List<RoleEntity>> getRoleList(){
+		JsonResult<List<RoleEntity>> jsonResult=new JsonResult<List<RoleEntity>>();
+		List<RoleEntity> roleList=roleService.getRoleList();
 		if(roleList !=null){
 			
 			jsonResult.setData(roleList);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.richdoor.dao.RoleDao" >
-  <resultMap id="BaseResultMap" type="com.richdoor.entity.Role" >
+  <resultMap id="BaseResultMap" type="com.richdoor.entity.RoleEntity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="rolename" property="rolename" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
@@ -24,13 +24,13 @@
     delete from tb_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.richdoor.entity.Role" >
+  <insert id="insert" parameterType="com.richdoor.entity.RoleEntity" >
     insert into tb_role (id, rolename, remark
       )
     values (#{id,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.richdoor.entity.Role" >
+  <insert id="insertSelective" parameterType="com.richdoor.entity.RoleEntity" >
     insert into tb_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -55,7 +55,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.richdoor.entity.Role" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.richdoor.entity.RoleEntity" >
     update tb_role
     <set >
       <if test="rolename != null" >
@@ -67,7 +67,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.richdoor.entity.Role" >
+  <update id="updateByPrimaryKey" parameterType="com.richdoor.entity.RoleEntity" >
     update tb_role
     set rolename = #{rolename,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}

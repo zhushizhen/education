@@ -2,20 +2,20 @@ package com.richdoor.dao;
 
 import java.util.List;
 
-import com.richdoor.entity.Role;
+import com.richdoor.entity.RoleEntity;
 
 public interface RoleDao {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Role record);
+    int insert(RoleEntity record);
 
-    int insertSelective(Role record);
+    int insertSelective(RoleEntity record);
 
-    Role selectByPrimaryKey(Integer id);
+    RoleEntity selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Role record);
+    int updateByPrimaryKeySelective(RoleEntity record);
 
-    int updateByPrimaryKey(Role record);
+    int updateByPrimaryKey(RoleEntity record);
     
-    List<Role> selectRoles();
+    List<RoleEntity> selectRoles();
 }

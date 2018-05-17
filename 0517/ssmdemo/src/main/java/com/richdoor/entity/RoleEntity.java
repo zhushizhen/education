@@ -1,6 +1,6 @@
 package com.richdoor.entity;
 
-public class Role {
+public class RoleEntity {
     private Integer id;
 
     private String rolename;

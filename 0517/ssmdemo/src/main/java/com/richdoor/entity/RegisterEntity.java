@@ -1,6 +1,6 @@
 package com.richdoor.entity;
 
-public class Register {
+public class RegisterEntity {
     private String id;
 
     private String username;

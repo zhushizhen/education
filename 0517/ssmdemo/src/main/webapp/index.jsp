@@ -146,12 +146,9 @@
    $("#password2").blur(function(){
     var password1=$("#password1").val();
     var password2=$("#password2").val();
-    debugger;
     if(password1!=password2){
     	alert("两次密码不一致，请重新输入");
     	 $("#password2").val("");
-    }else{
-    	
     }
   });
    //点击注册与后台交互并返回是否成功的信息
@@ -168,7 +165,17 @@
 		   alert("密码不能为空");
 		   return;
 	   }
-	   
+	   var register1={"username":username1,"password":password1,"roleid":role};
+	   $.ajax({
+		   type:"POST",
+		   url:"register/addUser",
+		   data:{register:JSON.stringify(register1)},
+		   dataType:"json",
+		   success:function(data){
+			   alert(data.message);
+			   window.location.reload();//注册成功后刷新当前页面
+		   }
+	   })
    });
 </script>
 </html>

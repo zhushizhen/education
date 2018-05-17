@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.richdoor.dao.RegisterDao;
-import com.richdoor.entity.Register;
+import com.richdoor.entity.RegisterEntity;
 import com.richdoor.service.RegisterService;
 @Service("registerService") 
 public class RegisterServiceImpl implements RegisterService {
@@ -18,7 +18,7 @@ public class RegisterServiceImpl implements RegisterService {
 	@Resource
 	private RegisterDao registerDao;
   
-	public boolean addUser(Register register) {
+	public boolean addUser(RegisterEntity register) {
 		String id=UUID.randomUUID().toString();
 		register.setId(id);
 		String password=register.getPassword();
@@ -32,8 +32,8 @@ public class RegisterServiceImpl implements RegisterService {
 		return false;
 	}
 	
-	public List<Register> queryUserByName(String username) {
-		List<Register> regList=registerDao.selectRegByName(username);
+	public List<RegisterEntity> queryUserByName(String username) {
+		List<RegisterEntity> regList=registerDao.selectRegByName(username);
 		return regList;
 	}
 	
