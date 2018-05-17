@@ -98,7 +98,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">注册</button>
+						<button type="button" class="btn btn-primary" id="register">注册</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 						</button>
 					</div>
@@ -120,6 +120,22 @@
 			   }
 		   }
 	   });
+   })
+   //确认密码输入框失去焦点，触发
+   $("#password2").blur(function(){
+    var password1=$("#password1").val();
+    var password2=$("#password2").val();
+    debugger;
+    if(password1!=password2){
+    	alert("两次密码不一致，请重新输入");
+    	 $("#password2").val("");
+    }else{
+    	
+    }
+  });
+   //点击注册与后台交互并返回是否成功的信息
+   $("#register").click(function(){
+	   
    })
 </script>
 </html>
