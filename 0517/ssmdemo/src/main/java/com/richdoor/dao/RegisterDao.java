@@ -21,4 +21,8 @@ public interface RegisterDao {
      * @return
      */
     List<RegisterEntity> selectRegByName(String username);
+    /**
+     * 用户登陆
+     */
+    RegisterEntity loginUser(RegisterEntity record);
 }

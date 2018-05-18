@@ -42,7 +42,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
-						<button type="submit" class="btn btn-primary btn-lg btn-block ">登录</button>
+						<button id="login1" type="submit" class="btn btn-primary btn-lg btn-block ">登录</button>
 						<button id="register" type="button" data-toggle="modal"
 							data-target="#myModal" class="btn btn-primary btn-lg btn-block ">注册</button>
 					</div>
@@ -174,6 +174,34 @@
 		   success:function(data){
 			   alert(data.message);
 			   window.location.reload();//注册成功后刷新当前页面
+		   }
+	   })
+   });
+   
+   //登陆验证
+   $("#login1").click(function(){
+	   var username=$("#username").val();
+	   var password=$("#password").val();
+	   if(username == ""){
+		   alert("用户名不能为空");
+		   return;
+	   }
+	   if(password == ""){
+		   alert("密码不能为空");
+		   return;
+	   }
+	   var loginUser={"username":username,"password":password};
+	   $.ajax({
+		   type:"POST",
+		   url:"login/userLogin",
+		   data:{loginUser:JSON.stringify(loginUser)},
+		   dataType:"json",
+		   success:function(data){
+			   debugger;
+			  var flag=data.issuccess;
+			  if(flag==false){
+				  alert(data.message);
+			  }
 		   }
 	   })
    });

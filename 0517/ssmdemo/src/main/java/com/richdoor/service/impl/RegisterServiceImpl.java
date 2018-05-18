@@ -11,14 +11,20 @@ import org.springframework.stereotype.Service;
 
 import com.richdoor.dao.RegisterDao;
 import com.richdoor.entity.RegisterEntity;
+import com.richdoor.entity.UserEntity;
+import com.richdoor.enumutils.StatusEnum;
 import com.richdoor.service.RegisterService;
+import com.richdoor.service.UserService;
 @Service("registerService") 
 public class RegisterServiceImpl implements RegisterService {
 	
 	@Resource
 	private RegisterDao registerDao;
+	
+	@Resource
+	private UserService userService;
   
-	public boolean addUser(RegisterEntity register) {
+	public boolean addUser(RegisterEntity register) throws Exception{
 		String id=UUID.randomUUID().toString();
 		register.setId(id);
 		String password=register.getPassword();
@@ -26,6 +32,14 @@ public class RegisterServiceImpl implements RegisterService {
 		register.setPassword(password);
 		
 		int number=registerDao.insert(register);
+		
+		int roleid=register.getRoleid();
+		if(roleid == 1 || roleid ==2){
+			UserEntity userEntity=new UserEntity();
+			userEntity.setRegid(id);
+			userEntity.setStatus(StatusEnum.待审核.getValue());
+			userService.addUser(userEntity);
+		}
 		if(number != 0){
 			return true;
 		}
@@ -57,6 +71,16 @@ public class RegisterServiceImpl implements RegisterService {
     public static String fillMD5(String md5){
         return md5.length()==32?md5:fillMD5("0"+md5);
     }
+
+	public boolean userLogin(RegisterEntity register) {
+		register.setPassword(getMD5(register.getPassword()));
+		 register=registerDao.loginUser(register);
+		 boolean flag=false;
+		 if(register!=null){
+			 flag=true;
+		 }
+		return flag;
+	}
 
 
 

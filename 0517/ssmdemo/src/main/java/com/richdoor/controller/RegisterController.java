@@ -1,5 +1,6 @@
 package com.richdoor.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,13 @@ public class RegisterController {
 	@RequestMapping("/isRepeatName")
 	public @ResponseBody JsonResult<String> queryByName(String username){
 		JsonResult<String> jsonResult=new JsonResult<String>();
-		List<RegisterEntity> registerlist=registerService.queryUserByName(username);
+		List<RegisterEntity> registerlist=new ArrayList<RegisterEntity>();
+		try {
+			registerlist = registerService.queryUserByName(username);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(registerlist.size() !=0){
 			jsonResult.setMessage("该用户名已存在！");
 		}
@@ -43,7 +50,13 @@ public class RegisterController {
 	
 		RegisterEntity registerEntity = JSONArray.toJavaObject((JSONObject) JSONArray.parse(register), RegisterEntity.class);
 		Integer roleid=registerEntity.getRoleid();
-		boolean flag=registerService.addUser(registerEntity);
+		boolean flag=true;
+		try {
+			flag = registerService.addUser(registerEntity);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(roleid == 1 || roleid == 2){
 			jsonResult.setMessage("您的信息需要审核过后才能登陆，请联系管理员审核");
 		}
