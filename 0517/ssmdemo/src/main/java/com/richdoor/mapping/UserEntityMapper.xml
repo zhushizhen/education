@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.richdoor.dao.UserDao" >
+  <resultMap id="BaseResultMap" type="com.richdoor.entity.UserEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="parentname" property="parentname" jdbcType="VARCHAR" />
+    <result column="relation" property="relation" jdbcType="VARCHAR" />
+    <result column="parenttel" property="parenttel" jdbcType="VARCHAR" />
+    <result column="regid" property="regid" jdbcType="VARCHAR" />
+    <result column="selfintroduce" property="selfintroduce" jdbcType="VARCHAR" />
+    <result column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, sex, age, telphone, address, parentname, relation, parenttel, regid, 
+    selfintroduce, courseid, status, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.richdoor.entity.UserEntity" >
+    insert into tb_user (id, username, sex, 
+      age, telphone, address, 
+      parentname, relation, parenttel, 
+      regid, selfintroduce, courseid, 
+      status, remark)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{age,jdbcType=INTEGER}, #{telphone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{parentname,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, #{parenttel,jdbcType=VARCHAR}, 
+      #{regid,jdbcType=VARCHAR}, #{selfintroduce,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.richdoor.entity.UserEntity" >
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="parentname != null" >
+        parentname,
+      </if>
+      <if test="relation != null" >
+        relation,
+      </if>
+      <if test="parenttel != null" >
+        parenttel,
+      </if>
+      <if test="regid != null" >
+        regid,
+      </if>
+      <if test="selfintroduce != null" >
+        selfintroduce,
+      </if>
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentname != null" >
+        #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttel != null" >
+        #{parenttel,jdbcType=VARCHAR},
+      </if>
+      <if test="regid != null" >
+        #{regid,jdbcType=VARCHAR},
+      </if>
+      <if test="selfintroduce != null" >
+        #{selfintroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.richdoor.entity.UserEntity" >
+    update tb_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentname != null" >
+        parentname = #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        relation = #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttel != null" >
+        parenttel = #{parenttel,jdbcType=VARCHAR},
+      </if>
+      <if test="regid != null" >
+        regid = #{regid,jdbcType=VARCHAR},
+      </if>
+      <if test="selfintroduce != null" >
+        selfintroduce = #{selfintroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        courseid = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.richdoor.entity.UserEntity" >
+    update tb_user
+    set username = #{username,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      parentname = #{parentname,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR},
+      parenttel = #{parenttel,jdbcType=VARCHAR},
+      regid = #{regid,jdbcType=VARCHAR},
+      selfintroduce = #{selfintroduce,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

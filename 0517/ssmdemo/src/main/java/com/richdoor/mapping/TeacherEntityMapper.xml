@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.richdoor.dao.TeacherDao" >
+  <resultMap id="BaseResultMap" type="com.richdoor.entity.TeacherEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="reatid" property="reatid" jdbcType="VARCHAR" />
+    <result column="workid" property="workid" jdbcType="INTEGER" />
+    <result column="opinion" property="opinion" jdbcType="VARCHAR" />
+    <result column="managerassess" property="managerassess" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, reatid, workid, opinion, managerassess, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_teacher
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_teacher
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.richdoor.entity.TeacherEntity" >
+    insert into tb_teacher (id, reatid, workid, 
+      opinion, managerassess, remark
+      )
+    values (#{id,jdbcType=VARCHAR}, #{reatid,jdbcType=VARCHAR}, #{workid,jdbcType=INTEGER}, 
+      #{opinion,jdbcType=VARCHAR}, #{managerassess,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.richdoor.entity.TeacherEntity" >
+    insert into tb_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="reatid != null" >
+        reatid,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="opinion != null" >
+        opinion,
+      </if>
+      <if test="managerassess != null" >
+        managerassess,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="reatid != null" >
+        #{reatid,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=INTEGER},
+      </if>
+      <if test="opinion != null" >
+        #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="managerassess != null" >
+        #{managerassess,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.richdoor.entity.TeacherEntity" >
+    update tb_teacher
+    <set >
+      <if test="reatid != null" >
+        reatid = #{reatid,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=INTEGER},
+      </if>
+      <if test="opinion != null" >
+        opinion = #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="managerassess != null" >
+        managerassess = #{managerassess,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.richdoor.entity.TeacherEntity" >
+    update tb_teacher
+    set reatid = #{reatid,jdbcType=VARCHAR},
+      workid = #{workid,jdbcType=INTEGER},
+      opinion = #{opinion,jdbcType=VARCHAR},
+      managerassess = #{managerassess,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

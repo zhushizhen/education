@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.richdoor.dao.StudentDao" >
+  <resultMap id="BaseResultMap" type="com.richdoor.entity.StudentEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="restuid" property="restuid" jdbcType="VARCHAR" />
+    <result column="workid" property="workid" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="VARCHAR" />
+    <result column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="retid" property="retid" jdbcType="VARCHAR" />
+    <result column="opinion" property="opinion" jdbcType="VARCHAR" />
+    <result column="teaassess" property="teaassess" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, restuid, workid, money, courseid, score, retid, opinion, teaassess, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_student
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_student
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.richdoor.entity.StudentEntity" >
+    insert into tb_student (id, restuid, workid, 
+      money, courseid, score, 
+      retid, opinion, teaassess, 
+      remark)
+    values (#{id,jdbcType=VARCHAR}, #{restuid,jdbcType=VARCHAR}, #{workid,jdbcType=VARCHAR}, 
+      #{money,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, 
+      #{retid,jdbcType=VARCHAR}, #{opinion,jdbcType=VARCHAR}, #{teaassess,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.richdoor.entity.StudentEntity" >
+    insert into tb_student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="restuid != null" >
+        restuid,
+      </if>
+      <if test="workid != null" >
+        workid,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="retid != null" >
+        retid,
+      </if>
+      <if test="opinion != null" >
+        opinion,
+      </if>
+      <if test="teaassess != null" >
+        teaassess,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="restuid != null" >
+        #{restuid,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="retid != null" >
+        #{retid,jdbcType=VARCHAR},
+      </if>
+      <if test="opinion != null" >
+        #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="teaassess != null" >
+        #{teaassess,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.richdoor.entity.StudentEntity" >
+    update tb_student
+    <set >
+      <if test="restuid != null" >
+        restuid = #{restuid,jdbcType=VARCHAR},
+      </if>
+      <if test="workid != null" >
+        workid = #{workid,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="courseid != null" >
+        courseid = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="retid != null" >
+        retid = #{retid,jdbcType=VARCHAR},
+      </if>
+      <if test="opinion != null" >
+        opinion = #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="teaassess != null" >
+        teaassess = #{teaassess,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.richdoor.entity.StudentEntity" >
+    update tb_student
+    set restuid = #{restuid,jdbcType=VARCHAR},
+      workid = #{workid,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      retid = #{retid,jdbcType=VARCHAR},
+      opinion = #{opinion,jdbcType=VARCHAR},
+      teaassess = #{teaassess,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
